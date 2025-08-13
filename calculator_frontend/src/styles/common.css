@@ -1,0 +1,124 @@
+@charset "UTF-8";
+/* Load Lexend font used by the extracted design */
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@500;700&display=swap');
+
+/* Design System Tokens as CSS Variables */
+:root {
+  /* Colors (from design_system colors) */
+  --color-adafb3: #adafb3; /* background */
+  --color-1d1d1f: #1d1d1f;
+  --color-ffffff: #ffffff;
+  --color-262629: #262629;
+  --color-ebebeb: #ebebeb;
+  --color-000000: #000000;
+  --color-f5f5f5: #f5f5f5;
+  --color-0047ff: #0047ff;
+  --color-e5e5e5: #e5e5e5;
+  --color-141414: #141414;
+  --color-1f1f1f: #1f1f1f;
+  --color-001754: #001754;
+  --color-d8e3ff: #d8e3ff;
+
+  /* Typography (Lexend family as base) */
+  --font-family-base: 'Lexend', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --typo-17-size: 24px;
+  --typo-17-weight: 700;
+  --typo-18-size: 18px; /* dark body white */
+  --typo-18-weight: 500;
+  --typo-19-size: 18px; /* dark regular gray */
+  --typo-19-weight: 500;
+  --typo-20-size: 24px; /* light header */
+  --typo-20-weight: 700;
+  --typo-21-size: 18px; /* light body */
+  --typo-21-weight: 500;
+  --typo-22-size: 18px; /* light disabled deep blue */
+  --typo-22-weight: 500;
+
+  /* Spacing and sizing (key values used in the screen) */
+  --space-0: 0;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-44: 44px;
+  --space-54: 54px;
+  --space-69: 69px; /* month label width */
+  --space-90: 90px; /* year block width */
+  --space-93: 93px; /* month block width */
+  --panel-width: 378px; /* inner calendar panel width */
+  --card-width: 426px;  /* outer card width */
+  --card-height: 396px; /* outer card height */
+  --canvas-width: 1200px;
+  --canvas-height: 800px;
+
+  /* Radii (from design_system border_radius) */
+  --radius-4: 4px;
+  --radius-5: 5px;
+  --radius-6: 6px;
+  --radius-8: 8px;
+  --radius-12: 12px;
+  --radius-16: 16px;
+  --radius-24: 24px;
+  --radius-32: 32px;
+  --radius-80: 80px;
+
+  /* Shadows (from design_system shadows) */
+  --shadow-0: 0 1px 2px 0 #000e33; /* shadow_0 */
+  --shadow-1: 0 1px 1px 0 #000e33; /* shadow_1 */
+  --shadow-2: 0 3px 2px 0 #0047ff; /* shadow_2 */
+  --shadow-3: 0 1.5px 1px 0 #001f70; /* shadow_3 */
+  --shadow-5: 0 4px 4px 0 #000e33; /* shadow_5 */
+
+  /* Semantic tokens for this screen */
+  --canvas-bg: var(--color-adafb3);
+  --light-card-bg: var(--color-f5f5f5); /* style_79 */
+  --dark-card-bg: var(--color-1d1d1f);  /* style_75 */
+
+  --light-button-bg: var(--color-ffffff); /* style_80 */
+  --dark-button-bg: var(--color-262629);  /* style_76 */
+
+  --light-panel-bg: var(--color-ffffff);  /* style_81 */
+  --dark-panel-bg: var(--color-262629);   /* style_77 */
+
+  --light-tile-bg: var(--color-ffffff);   /* style_82 */
+  --dark-tile-bg: var(--color-262629);    /* style_78 */
+
+  --tile-border: 0.5px solid var(--color-e5e5e5);
+  --tile-radius: var(--radius-6);
+
+  --today-bg: var(--color-0047ff);        /* style_14 */
+  --today-border: 2px solid var(--color-ffffff);
+  --today-radius: var(--radius-6);
+}
+
+/* Base reset */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-family-base);
+  background: var(--canvas-bg);
+  color: var(--color-1f1f1f);
+}
+
+/* Utilities */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+.text-center { text-align: center; }
+.bold { font-weight: 700; }
+
+/* Shadow helpers */
+.shadow-0 { box-shadow: var(--shadow-0); }
+.shadow-1 { box-shadow: var(--shadow-1); }
+.shadow-2 { box-shadow: var(--shadow-2), var(--shadow-3); }
+.shadow-5 { box-shadow: var(--shadow-5); }

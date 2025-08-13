@@ -1,0 +1,267 @@
+ /* Canvas wrapper mirrors the frame: 1200x800, radius 24, background #adafb3 */
+.screen-regular .canvas {
+  width: var(--canvas-width);
+  height: var(--canvas-height);
+  border-radius: var(--radius-24);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Layout: two cards side by side */
+.calendar-layout {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+/* Card containers (outer background) */
+.calendar-card {
+  width: var(--card-width);
+  height: var(--card-height);
+  border-radius: var(--radius-16);
+  padding: var(--space-24);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.calendar-card.light {
+  background: var(--light-card-bg); /* style_79 */
+  box-shadow: var(--shadow-0);
+}
+
+.calendar-card.dark {
+  background: var(--dark-card-bg); /* style_75 */
+  box-shadow: var(--shadow-0);
+}
+
+/* Inner panel (378px wide), rounded 6 per style_81 / style_77 */
+.calendar-panel {
+  width: var(--panel-width);
+  border-radius: var(--radius-6);
+  background: var(--light-panel-bg);
+  box-shadow: var(--shadow-1);
+  overflow: hidden;
+}
+
+.calendar-card.dark .calendar-panel {
+  background: var(--dark-panel-bg);
+}
+
+/* Header: 3 columns => 44 | auto | 44, height 44 */
+.calendar-header {
+  display: grid;
+  grid-template-columns: var(--space-44) 1fr var(--space-44);
+  align-items: center;
+  height: var(--space-44);
+  padding: 0;
+  background: transparent; /* parent panel defines background */
+}
+
+/* Circular nav buttons 44x44 */
+.nav-button {
+  width: var(--space-44);
+  height: var(--space-44);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-80);
+  border: none;
+  cursor: pointer;
+  background: var(--light-button-bg);
+  box-shadow: var(--shadow-1);
+}
+
+.calendar-card.dark .nav-button {
+  background: var(--dark-button-bg);
+}
+
+.nav-button svg {
+  width: 24px; height: 24px;
+}
+
+/* Center month/year group: width ~185, composed of month (93) and year (90) */
+.month-year {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.select {
+  height: var(--space-44);
+  padding: 0 var(--space-12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-6);
+  background: var(--light-panel-bg);
+  box-shadow: var(--shadow-1);
+}
+
+.calendar-card.dark .select {
+  background: var(--dark-button-bg);
+}
+
+/* Fixed widths per Figma */
+.select.month { width: var(--space-93); }
+.select.year  { width: var(--space-90); }
+
+/* Select label typography */
+.select .label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.calendar-card.light .select .label.text {
+  font-size: var(--typo-20-size);
+  font-weight: var(--typo-20-weight);
+  color: var(--color-141414);
+  line-height: 24px;
+}
+.calendar-card.dark .select .label.text {
+  font-size: var(--typo-17-size);
+  font-weight: var(--typo-17-weight);
+  color: var(--color-f5f5f5);
+  line-height: 24px;
+}
+
+/* Small dropdown caret */
+.caret {
+  width: 8px; height: 8px;
+}
+
+/* Day-of-week row: 7 columns x 44px */
+.dow-row {
+  display: grid;
+  grid-template-columns: repeat(7, var(--space-54));
+  height: var(--space-44);
+  align-items: center;
+}
+
+.dow-cell {
+  height: var(--space-44);
+  width: var(--space-54);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-4); /* style_9 */
+}
+
+.calendar-card.light .dow-cell .text {
+  font-size: var(--typo-21-size);
+  font-weight: var(--typo-21-weight);
+  color: var(--color-1f1f1f);
+  line-height: 18px;
+}
+.calendar-card.dark .dow-cell .text {
+  font-size: var(--typo-18-size);
+  font-weight: var(--typo-18-weight);
+  color: var(--color-ffffff);
+  line-height: 18px;
+}
+
+/* Weeks grid: repeat rows auto, each row 44px, columns 54px */
+.weeks {
+  display: grid;
+  grid-template-columns: repeat(7, var(--space-54));
+  grid-auto-rows: var(--space-44);
+  gap: 0;
+  padding: 0;
+}
+
+/* Day tile container matches 54x44; inner content is 50x44 with 2px side padding in Figma */
+.day {
+  width: var(--space-54);
+  height: var(--space-44);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day .day-content {
+  width: calc(var(--space-54) - 4px);
+  height: var(--space-44);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--tile-radius);
+  background: var(--light-tile-bg);
+  border: var(--tile-border);
+  box-shadow: var(--shadow-1);
+}
+
+/* Dark theme tile surface and border */
+.calendar-card.dark .day .day-content {
+  background: var(--dark-tile-bg);
+  border: var(--tile-border);
+}
+
+/* Day number text */
+.calendar-card.light .day .num {
+  font-size: var(--typo-21-size);
+  font-weight: var(--typo-21-weight);
+  color: var(--color-1f1f1f);
+  line-height: 18px;
+}
+.calendar-card.dark .day .num {
+  font-size: var(--typo-19-size);
+  font-weight: var(--typo-19-weight);
+  color: var(--color-ebebeb);
+  line-height: 18px;
+}
+
+/* Disabled (another month) */
+.calendar-card.light .day.disabled .num {
+  /* typo_22 */
+  color: var(--color-001754);
+}
+.calendar-card.dark .day.disabled .day-content {
+  background: rgba(255, 255, 255, 0.10); /* style_12 on dark tile */
+}
+.calendar-card.dark .day.disabled .num {
+  color: rgba(255, 255, 255, 0.80);
+}
+
+/* Today selected state (style_14) */
+.day.today .day-content {
+  background: var(--today-bg);
+  border: var(--today-border);
+}
+.calendar-card.light .day.today .num,
+.calendar-card.dark  .day.today .num {
+  color: var(--color-ffffff);
+  font-size: var(--typo-18-size);
+  font-weight: var(--typo-18-weight);
+}
+
+/* Interaction - selected (optional, matches today look) */
+.day.selected .day-content {
+  background: var(--today-bg);
+  border: var(--today-border);
+}
+.day.selected .num {
+  color: var(--color-ffffff);
+}
+
+/* Buttons focus styles */
+.nav-button:focus-visible,
+.select:focus-visible,
+.day:focus-visible .day-content {
+  outline: 2px solid var(--color-0047ff);
+  outline-offset: 2px;
+  border-radius: var(--tile-radius);
+}
+
+/* SVG icon tinting */
+.calendar-card.light .icon,
+.calendar-card.light .caret {
+  fill: var(--color-000000);
+}
+.calendar-card.dark .icon,
+.calendar-card.dark .caret {
+  fill: var(--color-ffffff);
+}
